@@ -2,10 +2,9 @@
   hosts: local
   connection: local
   vars: 
-    NAME: "SHIVA"
-    TIMES: 3000TIMES
+    name: "SHIVA"
+    times: 3000TIMES
   tasks:
   - name: print variables
     ansible.builtin.debug:
-      msg: "i love {{ NAME }}, this may times {{ TIMES }}"
-       
+      msg: "i love {{ name }}, this may times {{ times }}"
