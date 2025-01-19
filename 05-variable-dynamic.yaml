@@ -1,6 +1,10 @@
 - name: dynamic variables
   hosts: local
   connection: local
+  vars_prompt:
+  - name: NAME
+    promt: enter the name 
+    private: false
   vars_files:
   - course.yaml
   tasks:
