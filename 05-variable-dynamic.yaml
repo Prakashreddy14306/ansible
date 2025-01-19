@@ -3,7 +3,7 @@
   connection: local
   vars_prompt:
   - name: NAME
-    promt: enter the name 
+    prompt: enter the name 
     private: false
   vars_files:
   - course.yaml
