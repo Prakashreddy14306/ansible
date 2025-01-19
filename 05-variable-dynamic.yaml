@@ -1,10 +1,10 @@
 - name: dynamic variables
   hosts: local
   connection: local
-  vars:
+  vars_files:
   - course.yaml
   tasks:
   - name: print dynamic variables
     ansible.builtin.debug:
       msg: "variable {{ NAME }}, EXPERIANCE {{ EXP }}, skills {{ skill }}, MAPPI {{ MAPPING }}"
-      
+
