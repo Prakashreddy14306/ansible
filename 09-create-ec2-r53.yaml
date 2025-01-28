@@ -1,0 +1,35 @@
+- name: create ec2 
+  hosts: local
+  connection: local
+  vars:
+    ami_id: ami-09c813fb71547fc4f
+    instance_type: t2.micro
+    sg_id: sg-01883f8a23d267cb3
+    subnet_id: subnet-0b61639c3286fc9a4
+    instances:
+    - mysql
+    - backend
+    - frontend
+  tasks:
+  - name: python dependencies
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      executable: pip3.9
+    loop:
+    - boto3
+    - botocore
+
+  - name: instance creating
+    amazon.aws.ec2_instance:
+      name: "{{ item }}"
+      subnet_id: "{{ subnet_id }}"
+      security_group: "{{ sg_id }}"
+      image_id: "{{ ami_id }}"
+      instance_type: "{{ instance_type }}"
+    loop: "{{ instances }}"
+    register: ec2_info
+
+  - name: print message of ec2 
+    ansible.builtin.debug:
+      msg: "{{ item }}"
+    loop: "{{ ec2_info }}"
