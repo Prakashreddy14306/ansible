@@ -12,14 +12,19 @@
     - frontend
   tasks:
   - name: python dependencies
+    tags:
+    - py
     ansible.builtin.pip:
       name: "{{ item }}"
       executable: pip3.9
     loop:
     - boto3
     - botocore
+  
 
   - name: instance creating
+    tags:
+    - ec2
     amazon.aws.ec2_instance:
       name: "{{ item }}"
       subnet_id: "{{ subnet_id }}"
