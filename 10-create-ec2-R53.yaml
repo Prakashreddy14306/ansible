@@ -4,7 +4,7 @@
   vars:
     ami_id: ami-09c813fb71547fc4f
     instance_type: t2.micro
-    sg_id: sg-01883f8a23d267cb3
+    sg_id: sg-01d879585365d69563
     subnet_id: subnet-0b61639c3286fc9a4
     instances:
     - mysql
